@@ -1,4 +1,4 @@
-export const carros = [
+const carros = [
     {
         id: 1,
         marca: 'Seat',
@@ -55,3 +55,34 @@ export const carros = [
         }
     }
 ];
+
+const carroPorNombre = (nombreCliente) => {
+    return carros.find(i => i.client.name === nombreCliente);
+}
+
+const carroPorId = () =>{
+    return carros.filter(i => i.id == 1);
+}
+
+const findCarById = (id) =>{
+    const promise = new Promise((resolve,reject) =>{
+        setTimeout(() =>{
+            const test = carroPorId(2);
+            
+            if(test){
+                resolve(test);
+            }else{
+                reject('Error No se encontro el carro');
+            }
+        }, 3000);
+    });
+
+    return promise;
+}
+
+export {
+    carros,
+    carroPorNombre as default,
+    carroPorId,
+    findCarById
+}

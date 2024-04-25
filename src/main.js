@@ -1,82 +1,26 @@
-import {carros} from './data/carros'
 
-const carro = [
-    {
-        id: 1,
-        marca: 'Seat',
-        modelo: 'Fr',
-        anio: 2018,
-        nombre: 'Leon',
-        client:{
-            name: 'Luis',
-            apellido: 'Cortez'
-        }
-    },
-    {
-        id: 2,
-        marca: 'Cupra',
-        modelo: 'Excelence',
-        anio: 2018,
-        nombre: 'Arona',
-        client:{
-            name: 'Luis',
-            apellido: 'Cortez'
-        }
-    },
-    {
-        id: 3,
-        marca: 'Seat',
-        modelo: 'cupra',
-        anio: 2018,
-        nombre: 'Formentor',
-        client:{
-            name: 'Luis',
-            apellido: 'Cortez'
-        }
-    },
-    {
-        id: 4,
-        marca: 'cupra',
-        modelo: 'Electrico',
-        anio: 2018,
-        nombre: 'Moto',
-        client:{
-            name: 'Luis',
-            apellido: 'Cortez'
-        }
-    },
-    {
-        id: 5,
-        marca: 'Seat',
-        modelo: 'Fr',
-        anio: 2018,
-        nombre: 'Leon',
-        client:{
-            name: 'Luis',
-            apellido: 'Cortez'
-        }
-    }
-];
 
-console.log(carro);
+//Request
+//request.then(response => response.json()
+//.then(data => console.log(data)));
 
-const marcasCarros = carro.map(i =>{
-    return i.marca;
-});
+const findAllUsers = async() =>{
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    const users = await response.json();
+    const ul = document.createElement('ul');
 
-const nombresCarros = carro.map(i =>{
-    return i.client.name;
-});
+    users.forEach(element => {
+        const li = document.createElement('li');
+        li.innerText = element.name;
+        ul.append(li);
+        console.log(element.name);        
+    });
 
-console.log(marcasCarros);
+    document.getElementById('root').append(ul);
+}
 
-const carroPorNombre = carro.find(i => i.nombre === 'Formentor')
+findAllUsers();
 
-console.log(carroPorNombre);
 
-const carroFilter = carro.filter(i => i.id == 1)
-console.log(carroFilter);
+console.log('Prueba de delay');
 
-const carroSome = carro.some(i => i.client.name === 'Luis')
-
-console.log(carroSome);
